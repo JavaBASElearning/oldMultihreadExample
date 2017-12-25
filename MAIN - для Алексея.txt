@@ -1,0 +1,55 @@
+
+public class MainFrame extends JFrame{
+
+	DefaultListModel<String> dlm = new DefaultListModel<String>();
+	
+	
+	JList souvenirList;
+	public int mySum;
+
+    JScrollPane scrollPane;
+    String lineSeparator = System.getProperty("line.separator");
+
+
+    Container c = getContentPane();
+
+
+	public static void main(String[] args)
+
+	public MainFrame() {
+        getContentPane().setLayout(null);
+
+        
+        JList <String> souvenirList = new JList<>(dlm);
+
+        souvenirList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+        souvenirList.setLayoutOrientation(JList.VERTICAL);
+
+        scrollPane = new JScrollPane(souvenirList);
+        scrollPane.setBounds(15, 8, 437, 330);
+
+        c.add(scrollPane);
+        
+        JButton btnNewButton = new JButton("Write");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+
+		        
+		        Thread t1 = new Thread(new WritetofileTHR(), "t1");
+		        Thread t2 = new Thread(new SumtofileTHR(), "t2"); 
+		        System.out.println("Стартуем runnable потоки");
+		        t1.start();
+		        t2.start();
+		  
+	    		
+        		
+        	}
+        });
+        btnNewButton.setBounds(477, 8, 89, 23);
+        getContentPane().add(btnNewButton);
+        
+       
+	
+	

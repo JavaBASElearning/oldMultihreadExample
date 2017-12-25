@@ -1,0 +1,71 @@
+
+public class SumtofileTHR implements Runnable {
+	
+private int val;
+
+	
+public void run() {
+		
+		try {
+			
+			Thread.sleep(1500);
+			
+			
+			for (int j = 0; j < 10; j++) {
+	         
+				doReadAndSumProcessing();
+				
+	        }
+			
+			
+			
+		} catch (InterruptedException e) {
+		
+			e.printStackTrace();
+			
+		}
+		
+	}	
+	
+
+private void setval(int x) {
+	
+	this.val = x;
+	
+}
+
+private void doReadAndSumProcessing() throws InterruptedException {
+	
+	Thread.sleep(9000);
+	
+	
+	try {	
+		 
+		FileReader fr = new FileReader("text.txt");
+		BufferedReader br = new BufferedReader(fr);
+
+		
+
+		 String strLine = null, tmp;
+
+		while ((tmp = br.readLine()) != null)
+{
+			strLine = tmp;
+			int lastvalue = Integer.parseInt(line);
+			System.out.println("Считанное значение = " + line);
+       
+        }
+		
+		br.close();
+		fr.close();
+		
+		} catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }	
+	
+	
+}
+
+}
